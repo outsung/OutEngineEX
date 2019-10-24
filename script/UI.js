@@ -2,6 +2,7 @@
 //--------------------------------------------------------------------------HTML
 let hUserscreen = document.getElementById("userscreen");
 let hBuffer = document.getElementById("buffer");
+let hTool = document.getElementsByClassName("tool");
 
 // material = Rock, Wood, Metal, BouncyBall, SuperBall, Pillow, Static
 let userMaterial = "SuperBall";
@@ -43,7 +44,6 @@ hBuffer.addEventListener('mousemove', function(event){
 });
 
 
-
 // Buffer 우클릭 시
 hBuffer.addEventListener('mousedown', function(event){
   if ((event.button == 2) || (event.which == 3)) {
@@ -82,15 +82,14 @@ hBuffer.addEventListener('click', function(event){
 });
 
 
-//클릭
-hUserScreen.addEventListener('click', function(event){
+for(let i = 0; i < 7; i++){
+  //클릭
+  hTool[i].addEventListener('click', function(event){
+    console.log(i);
+  });
 
-  let c = new circle(random(10.0,30.0));
-  let indexB = Scene.add(c, mouse.x, mouse.y);
-  // 기본
-  Scene.bodies[indexB].material = userMaterial;
-  Scene.bodies[indexB].initialize();
-});
+}
+
 
 
 // 휠
