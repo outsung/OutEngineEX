@@ -1084,7 +1084,7 @@ function PolygontoPolygon(m, a, b){
   faceB = temp[0];
   let penetrationB = temp[1];
   if(penetrationB >= 0.0){
-    console.log("1x");
+    //console.log("1x");
     return m;
   }
   let referenceIndex;

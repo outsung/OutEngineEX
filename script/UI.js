@@ -1,11 +1,7 @@
 //------------------------------------------------------------------------------ define
 //--------------------------------------------------------------------------HTML
 let hUserscreen = document.getElementById("userscreen");
-
-let camera = {
-  position : new vector2(0, 0),
-  scale : 1.0
-}
+let hBuffer = document.getElementById("buffer");
 
 // material = Rock, Wood, Metal, BouncyBall, SuperBall, Pillow, Static
 let userMaterial = "SuperBall";
@@ -26,18 +22,8 @@ function resize(){
 //-----------------------------------------------------------------mouse
 // F = add ,del ,catch, enter, break;
 //
-let mouseFlist = {
-  F : "add",
-
-  add : {
-
-  }
-}
-
 
 let mouse = {
-  right : "",
-  left : "",
   x : 0,
   y : 0
 };
@@ -48,7 +34,7 @@ document.addEventListener('contextmenu', function() {
 });
 
 
-hUserscreen.addEventListener('mousemove', function(event){
+hBuffer.addEventListener('mousemove', function(event){
   //console.log("x : " + event.movementX + ", y : " + event.movementY);
   //mapRotate(event.movementX);
   mouse.x = event.offsetX;
@@ -58,8 +44,8 @@ hUserscreen.addEventListener('mousemove', function(event){
 
 
 
-// 우클릭 시
-hUserscreen.addEventListener('mousedown', function(event){
+// Buffer 우클릭 시
+hBuffer.addEventListener('mousedown', function(event){
   if ((event.button == 2) || (event.which == 3)) {
 
 
@@ -85,8 +71,19 @@ hUserscreen.addEventListener('mousedown', function(event){
   }
 });
 
-// 클릭 시
-hUserscreen.addEventListener('click', function(event){
+// Buffer 클릭 시
+hBuffer.addEventListener('click', function(event){
+
+  let c = new circle(random(10.0,30.0));
+  let indexB = Scene.add(c, mouse.x, mouse.y);
+  // 기본
+  Scene.bodies[indexB].material = userMaterial;
+  Scene.bodies[indexB].initialize();
+});
+
+
+//클릭
+hUserScreen.addEventListener('click', function(event){
 
   let c = new circle(random(10.0,30.0));
   let indexB = Scene.add(c, mouse.x, mouse.y);
@@ -97,6 +94,7 @@ hUserscreen.addEventListener('click', function(event){
 
 
 // 휠
+/*
 hUserscreen.addEventListener('mousewheel', function(delta){
   let hCanvas1 = document.getElementsByTagName("canvas")[0];
   let hCanvas2 = document.getElementsByTagName("canvas")[1];
@@ -116,7 +114,7 @@ hUserscreen.addEventListener('mousewheel', function(delta){
     hCanvas2.style.transform = "scale(" + camera.scale + ")";
   }
 });
-
+*/
 //--------------------------------------------------------------ketbord
 
 
@@ -148,11 +146,11 @@ let drawingBuffer = 0;
 let ctx = buffers[drawingBuffer].getContext("2d");
 
 function bufferInit(){
-  buffers[drawingBuffer].width = 8000;
-  buffers[drawingBuffer].height = 6000;
+  buffers[drawingBuffer].width = 800;
+  buffers[drawingBuffer].height = 600;
   bufferFlip();
-  buffers[drawingBuffer].width = 8000;
-  buffers[drawingBuffer].height = 6000;
+  buffers[drawingBuffer].width = 800;
+  buffers[drawingBuffer].height = 600;
 }
 
 function bufferFlip(){
@@ -164,7 +162,7 @@ function bufferFlip(){
 
   ctx = buffers[drawingBuffer].getContext("2d");
 
-  ctx.clearRect(0, 0, 8000, 6000);
+  ctx.clearRect(0, 0, 800, 600);
 }
 
 

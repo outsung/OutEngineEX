@@ -15,11 +15,13 @@ canvas{
   margin-top: 100px;
 }
 
-#scene1{
+#buffer1{
+  z-index: 3;
   visibility: hidden;
   transform: scale(1.0);
 }
-#scene2{
+#buffer2{
+  z-index: 3;
   visibility: visible;
   transform: scale(1.0);
 }
