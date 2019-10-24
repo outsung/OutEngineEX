@@ -1168,13 +1168,13 @@ function PolygontoPolygon(m, a, b){
   temp = Clip(new vector2(-sidePlaneNormal.x, -sidePlaneNormal.y), negSide, incidentFace);
   incidentFace = temp[1];
   if(temp[0] < 2){
-    console.log("2x");
+    //console.log("2x");
     return m; // Due to floating point error, possible to not have required points
   }
   temp = Clip(sidePlaneNormal, posSide, incidentFace);
   incidentFace = temp[1];
   if(temp[0] < 2){
-    console.log("3x");
+    //console.log("3x");
     return m; // Due to floating point error, possible to not have required points
   }
   // Flip
@@ -1202,7 +1202,7 @@ function PolygontoPolygon(m, a, b){
     m.penetration /= cp;
   }
 
-  console.log(cp);
+  //console.log(cp);
   m.contact_count = cp;
 
   return m;
