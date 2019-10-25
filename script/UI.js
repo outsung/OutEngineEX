@@ -5,6 +5,15 @@ let hTool = document.getElementsByClassName("tool");
 
 // material = Rock, Wood, Metal, BouncyBall, SuperBall, Pillow, Static
 let userMaterial = "SuperBall";
+let userMaterialList = {
+  Rock : 0,
+  Wood : 1,
+  Metal : 2,
+  BouncyBall : 3,
+  SuperBall : 4,
+  Pillow : 5,
+  Static : 6
+}
 
 
 
@@ -75,6 +84,7 @@ for(let i = 0; i < 7; i++){
   //클릭
   hTool[i].addEventListener('click', function(event){
     // material = Rock, Wood, Metal, BouncyBall, SuperBall, Pillow, Static
+    hTool[userMaterial].style.backgroundColor = "#FFA585";
     switch (i) {
       case 0:
         userMaterial = "Rock";
@@ -98,6 +108,7 @@ for(let i = 0; i < 7; i++){
         userMaterial = "Static";
         break;
     }
+    hTool[userMaterial].style.backgroundColor = "#FF7883";
   });
 
 }
@@ -320,4 +331,3 @@ scene.prototype.render = function(){
 //------------------------------------------------------------------------------ define
 
 bufferInit();
-resize();
