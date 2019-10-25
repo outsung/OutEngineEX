@@ -14,6 +14,7 @@ let userMaterialList = {
   Pillow : 5,
   Static : 6
 }
+hTool[userMaterialList[userMaterial]].style.backgroundColor = "#788BFF";
 
 
 
