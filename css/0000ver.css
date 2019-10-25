@@ -21,8 +21,8 @@ canvas{
 }
 
 .tool{
-  position: absolute;
   display: inline-block;
+  margin-top: 30px;
   width: 70px;
   height: 70px;
   background-color: red;
