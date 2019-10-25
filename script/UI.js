@@ -87,24 +87,31 @@ for(let i = 0; i < 7; i++){
     hTool[userMaterialList[userMaterial]].backgroundColor = "#FFA585";
     switch (i) {
       case 0:
+        console.log("0");
         userMaterial = "Rock";
         break;
       case 1:
+        console.log("1");
         userMaterial = "Wood";
         break;
       case 2:
+        console.log("2");
         userMaterial = "Metal";
         break;
       case 3:
+        console.log("3");
         userMaterial = "BouncyBall";
         break;
       case 4:
+        console.log("4");
         userMaterial = "SuperBall";
         break;
       case 5:
+        console.log("5");
         userMaterial = "Pillow";
         break;
       case 6:
+        console.log("6");
         userMaterial = "Static";
         break;
     }
