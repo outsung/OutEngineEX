@@ -115,7 +115,7 @@ for(let i = 0; i < 7; i++){
         userMaterial = "Static";
         break;
     }
-    hTool[i].backgroundColor = "#788BFF";
+    hTool[i].style.backgroundColor = "#788BFF";
   });
 
 }
