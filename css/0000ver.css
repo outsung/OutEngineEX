@@ -35,11 +35,13 @@ body{
 
 
 #buffer1{
+  position: absolute;
   z-index: 3;
   visibility: hidden;
   transform: scale(1.0);
 }
 #buffer2{
+  position: absolute;
   z-index: 3;
   visibility: visible;
   transform: scale(1.0);
