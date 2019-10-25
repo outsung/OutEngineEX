@@ -1,6 +1,5 @@
 //------------------------------------------------------------------------------ define
 //--------------------------------------------------------------------------HTML
-let hUserscreen = document.getElementById("userscreen");
 let hBuffer = document.getElementById("buffer");
 let hTool = document.getElementsByClassName("tool");
 
@@ -8,17 +7,7 @@ let hTool = document.getElementsByClassName("tool");
 let userMaterial = "SuperBall";
 
 
-function resize(){
-  let hUserScreen = document.getElementById("userscreen");
 
-  //console.log('Resizing...')
-
-  //userScreen.width = window.innerWidth;
-  //userScreen.height = window.innerHeight;
-
-  hUserScreen.style.width = window.innerWidth + "px";
-  hUserScreen.style.height = window.innerHeight + "px";
-};
 
 
 //-----------------------------------------------------------------mouse
