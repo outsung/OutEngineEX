@@ -82,7 +82,7 @@ hBuffer.addEventListener('click', function(event){
   Scene.bodies[indexB].initialize();
 });
 
-
+console.log(hTool);
 for(let i = 0; i < 7; i++){
   //클릭
   hTool[i].addEventListener('click', function(event){
