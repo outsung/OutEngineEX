@@ -82,11 +82,33 @@ hBuffer.addEventListener('click', function(event){
   Scene.bodies[indexB].initialize();
 });
 
-console.log(hTool);
 for(let i = 0; i < 7; i++){
   //클릭
   hTool[i].addEventListener('click', function(event){
-    console.log(i);
+    // material = Rock, Wood, Metal, BouncyBall, SuperBall, Pillow, Static
+    switch (i) {
+      case 0:
+        userMaterial = "Rock";
+        break;
+      case 1:
+        userMaterial = "Wood";
+        break;
+      case 2:
+        userMaterial = "Metal";
+        break;
+      case 3:
+        userMaterial = "BouncyBall";
+        break;
+      case 4:
+        userMaterial = "SuperBall";
+        break;
+      case 5:
+        userMaterial = "Pillow";
+        break;
+      case 6:
+        userMaterial = "Static";
+        break;
+    }
   });
 
 }
