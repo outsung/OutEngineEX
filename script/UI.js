@@ -84,7 +84,7 @@ for(let i = 0; i < 7; i++){
   //클릭
   hTool[i].addEventListener('click', function(event){
     // material = Rock, Wood, Metal, BouncyBall, SuperBall, Pillow, Static
-    hTool[userMaterialList[userMaterial]].backgroundColor = "#FFA585";
+    hTool[userMaterialList[userMaterial]].style.backgroundColor = "#FFA585";
     switch (i) {
       case 0:
         console.log("0");
