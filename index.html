@@ -2,32 +2,139 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>OutEngineEX</title>
-    <link rel="stylesheet" href="https://outsung.github.io/OutEngineEX/css/0000ver.css">
+    <title>start</title>
+    <link rel="stylesheet" href="https://outsung.github.io/OutEngineEX/css/style.css">
   </head>
-  <body onkeydown="keyPress()" onkeyup="keyUp()">
+  <body onresize="resize()" onkeydown="keyPress()" onkeyup="keyUp()">
+    <div id="input">
+      <h1>New</h1>
+      <div id="textbox">
+        <div id="inputWidth">
+          <label>Width</label>
+          <input type="text" onfocus="inputFocusOn(this)" onfocusout="inputFocusOut(this)">
+        </div>
+        <div id="inputHeight">
+          <label>Height</label>
+          <input type="text" onfocus="inputFocusOn(this)" onfocusout="inputFocusOut(this)">
+        </div>
+        <button onclick="setBufferSize()">확인</button>
+      </div>
+    </div>
+    <!-- 캐릭터 설정 -->
+    <!--
+    <div class="scroll">
+      <div>11</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+    -->
+    <div id="userscreen">
 
-    <div id="buffer">
       <canvas id="buffer1"></canvas>
       <canvas id="buffer2"></canvas>
+      <div id="buffer"></div>
+
+      <div id="log"></div>
+
     </div>
 
-
-    <div id="log"></div>
-
-    <div id="toolmenu">
-      <div class="tool">Rock</div>
-      <div class="tool">Wood</div>
-      <div class="tool">Metal</div>
-      <div class="tool">BouncyBall</div>
-      <div class="tool">SuperBall</div>
-      <div class="tool">Pillow</div>
-      <div class="tool">Static</div>
+    <div class="uibutton" id="R">
+      <img src="https://outsung.github.io/OutEngineEX/image/add_circle.png"/>
     </div>
+    <div class="uibutton" id="L">
+      <img src="https://outsung.github.io/OutEngineEX/image/add_polygon.png"/>
+    </div>
+    <div class="uibutton" id="M">
+      <img src="https://outsung.github.io/OutEngineEX/image/SuperBall.png"/>
+    </div>
+
+    <div class="uibutton" id="tabmenubutton"></div>
+    <div id="tabmenu">
+      <div id="scroll">
+        <ul>
+          <li><h3>Material</h3>
+            <ul>
+              <li class="Rock">
+                <img src="https://outsung.github.io/OutEngineEX/image/Rock.png"/>
+              </li>
+              <li class="Wood">
+                <img src="https://outsung.github.io/OutEngineEX/image/Wood.png"/>
+              </li>
+              <li class="Metal">
+                <img src="https://outsung.github.io/OutEngineEX/image/Metal.png"/>
+              </li>
+              <li class="BouncyBall">
+                <img src="https://outsung.github.io/OutEngineEX/image/BouncyBall.png"/>
+              </li>
+              <li class="SuperBall">
+                <img src="https://outsung.github.io/OutEngineEX/image/SuperBall.png"/>
+              </li>
+              <li class="Pillow">
+                <img src="https://outsung.github.io/OutEngineEX/image/Pillow.png"/>
+              </li>
+              <li class="Static">
+                <img src="https://outsung.github.io/OutEngineEX/image/Static.png"/>
+              </li>
+            </ul>
+          </li>
+
+          <li><h3>ADD</h3>
+            <ul>
+              <li class="circle">
+                <img src="https://outsung.github.io/OutEngineEX/image/add_circle.png"/>
+              </li>
+              <li class="polygon">
+                <img src="https://outsung.github.io/OutEngineEX/image/add_polygon.png"/>
+              </li>
+            </ul>
+          </li>
+
+          <li><h3>DEL</h3>
+            <ul>
+              <li class="one">
+                <img src="https://outsung.github.io/OutEngineEX/image/del_one.png"/>
+              </li>
+              <li class="all">
+                <img src="https://outsung.github.io/OutEngineEX/image/del_all.png"/>
+              </li>
+            </ul>
+          </li>
+
+          <li><h3>CATCH</h3>
+            <ul>
+              <li class="one">
+                <img src="https://outsung.github.io/OutEngineEX/image/catch_one.png"/>
+              </li>
+              <li class="connect">
+                <img src="https://outsung.github.io/OutEngineEX/image/catch_connect.png"/>
+              </li>
+              <li class="quit">
+                <img src="https://outsung.github.io/OutEngineEX/image/catch_quit.png"/>
+              </li>
+            </ul>
+          </li>
+
+          <li><h3>MOVE</h3>
+            <ul>
+              <li class="basic">
+                <img src="https://outsung.github.io/OutEngineEX/image/move_basic.png"/>
+              </li>
+              <li class="reset">
+                <img src="https://outsung.github.io/OutEngineEX/image/move_reset.png"/>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="filter"></div>
 
     <script type="text/javascript" src="https://outsung.github.io/OutEngineEX/script/physicsEngine.js"></script>
-    <script type="text/javascript" src="https://outsung.github.io/OutEngineEX/script/UI.js"></script>
-    <script type="text/javascript" src="https://outsung.github.io/OutEngineEX/script/main.js"></script>
-
+    <script type="text/javascript" src="https://outsung.github.io/OutEngineEX/script/Ui.js"></script>
+    <!--
+    <script type="text/javascript" src="../script/physicsEngineMain.js"></script>
+    -->
   </body>
 </html>

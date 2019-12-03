@@ -1,0 +1,369 @@
+
+* {
+  list-style-type:none;
+  margin: 0px;
+  border: 0px;
+}
+
+*:focus{
+  outline: none;
+}
+
+div{
+  border: 0px solid green;
+}
+
+body{
+  /*cursor:none;*/
+  /*cursor: url("./scope.png"), pointer;*/
+  margin: 0px;
+  overflow: hidden;
+}
+
+#input{
+  position: relative;
+  z-index: 7;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+#input h1{
+  position: absolute;
+}
+
+#textbox{
+  border-radius: 5px;
+  position: absolute;
+  z-index: 7;
+  width: 300px;
+  height: 250px;
+  background-color: #72ABB0;
+}
+
+
+input{
+  font-family: inherit;
+  border-radius: 5px;
+  border: 1px solid #616161;
+  padding: .8em .5em;
+  width: 200px;
+}
+
+
+#textbox div{
+  position: relative;
+  margin: 35px 42px;
+}
+
+label{
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  padding: .6em .5em;
+  color: #999;
+  cursor: text;
+  transition: all 0.7s;
+}
+
+
+button{
+  background-color: white;
+  width: 150px;
+  height: 40px;
+  position: relative;
+  border-top: 5px solid #79A1BA;
+  border-bottom: 5px solid white;
+  margin: 5px 75px;
+}
+
+button:hover:after{width: 150px;}
+button:hover:before{width: 0px;}
+
+button:after{
+  content:'';
+  width: 0px;
+  height: 25px;
+
+  margin-top: 5px;
+  border-bottom: 5px solid #79A1BA;
+
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition: width 0.9s;
+}
+
+button:before{
+  content:'';
+  width: 150px;
+  height: 40px;
+
+  border-top: 5px solid white;
+
+  position: absolute;
+  left: 0px;
+  top: -5px;
+  transition: width 0.9s;
+}
+
+/*
+.view{
+  width:1200px;
+  height:400px;
+  position: absolute;
+  border:3px solid red;
+  overflow: hidden;
+}
+/*
+.view .scroll{
+  width: 10000px;
+  height: 310px;
+  background-color: green;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+*/
+/*
+.scroll{
+  /*visibility: hidden;
+  width: 1200px;
+  height: 300px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+}
+
+.scroll div{
+  display: inline-block;
+
+  width: 400px;
+  height: 300px;
+  background-color: yellow;
+}
+*/
+
+
+#filter{
+  z-index: 5;
+  position: absolute;
+  visibility: hidden;
+  background-color: black;
+  opacity: 0.5;
+}
+
+
+.uibutton{
+  z-index: 6;
+  position: absolute;
+
+  width: 100px;
+  height: 100px ;
+
+  border: 3px solid #7BAEB5;
+  background-color: #629296;
+  border-radius: 100px;
+  transition: all 0.2s;
+
+  overflow: hidden;
+}
+
+.uibutton img{
+  position: absolute;
+}
+
+.uibutton:after{
+  position: absolute;
+  font-size: 20px;
+  content:'';
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align:center;
+  z-index: 3;
+  color: black;
+  transform: scale(1.3);
+}
+
+.uibutton:before{
+  position: absolute;
+  content:'';
+  width: 100px;
+  height: 100px;
+  z-index: 3;
+  opacity: 0.5;
+  background-color: white;
+  transform: scale(1.3);
+}
+
+#M{
+  width: 80px;
+  height: 80px;
+}
+#M img{
+  width: 80px;
+  height: 80px;
+}
+
+#M:after{
+  content:'Material';
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+
+  transform: scale(0.7);
+}
+
+#R:after{content:'R';}
+#L:after{content:'L';}
+
+#tabmenubuttonOn:after{content:'>'; font-size: 30px; margin: -2px 0px 0px -25px;}
+#tabmenubutton:after{content:'<'; font-size: 30px; margin: -2px 0px 0px -25px;}
+
+#tabmenu{
+  visibility: hidden;
+  z-index: 7;
+  position: absolute;
+  background-color: #72ABB0;
+  transition: all 0.2s;
+}
+
+#scroll{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#scroll ul{
+  padding: 0px;
+}
+#scroll ul li{
+  margin: 20px 25px 20px 20px;
+  /*
+  background-color: gray;
+  */
+  float: left;
+}
+#scroll ul li h3{
+  display: block;
+  /*
+  margin: 10px 0px 0px 0px;
+  background-color: red;
+  display: block;
+  -*/
+}
+#scroll ul li ul{
+  float: left;
+  background-color: #89C2C9;
+  border-radius: 50px;
+  /*
+  float:left;
+  margin: 20px 35px 10px 20px;
+  background-color: #6B4C7F;
+  border-radius: 50px;
+  */
+}
+
+#scroll ul li ul li{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  background-color: white;
+  margin: 15px 10px 15px 10px;
+  float: left;
+  overflow: visible;
+  position: relative;
+  overflow: hidden;
+  /*
+  line-height: 100px;
+  text-align:center;
+  margin: 0px 10px 10px 10px;
+  background-color: #FF5C30;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  */
+}
+
+
+#scroll ul li ul li:after{
+  font-size: 15px;
+  content:'';
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align:center;
+  z-index: 2;
+  position: absolute;
+  background-color: black;
+  opacity: 0.7;
+  color: white;
+  border-radius: 100px;
+  transform: scale(1.3);
+  transition: all 0.5s;
+}
+
+#scroll ul li ul li.Rock:after{content:'Rock';}
+#scroll ul li ul li.Wood:after{content:'Wood';}
+#scroll ul li ul li.Metal:after{content:'Metal';}
+#scroll ul li ul li.BouncyBall:after{content:'BouncyBall';}
+#scroll ul li ul li.SuperBall:after{content:'SuperBall';}
+#scroll ul li ul li.Pillow:after{content:'Pillow';}
+#scroll ul li ul li.Static:after{content:'Static';}
+
+#scroll ul li ul li.circle:after{content:'circle';}
+#scroll ul li ul li.polygon:after{content:'polygon';}
+
+#scroll ul li ul li.one:after{content:'one';}
+#scroll ul li ul li.all:after{content:'all';}
+
+#scroll ul li ul li.connect:after{content:'connect';}
+#scroll ul li ul li.quit:after{content:'quit';}
+
+#scroll ul li ul li.basic:after{content:'basic';}
+#scroll ul li ul li.reset:after{content:'reset';}
+
+
+#scroll ul li ul li:hover:after{
+  transform: scale(0.0);
+}
+
+#scroll ul li ul li img{
+  z-index: 1;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+
+#userscreen{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+canvas{
+  border: 5px solid black;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+#buffer{
+  z-index: 4;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+#scene1{
+  visibility: hidden;
+  transform-origin: 0 0;
+  transform: scale(1.0);
+}
+#scene2{
+  visibility: visible;
+  transform-origin: 0 0;
+  transform: scale(1.0);
+}

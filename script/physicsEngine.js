@@ -177,32 +177,32 @@ function size(a){
 //--------------------------------------------------------------------------init
 const material = {
   Rock : {
-    density : 0.6,
+    density : 0.12,
     restitution : 0.1,
     r : 84, g : 84, b : 84 // 어두운 회색
   },
   Wood : {
-    density : 0.3,
+    density : 0.06,
     restitution : 0.2,
     r : 255, g : 111, b : 28 //주황
   },
   Metal : {
-    density : 1.2,
+    density : 0.24,
     restitution : 0.05,
     r : 156, g : 156, b : 156 // 회색
   },
   BouncyBall : {
-    density : 0.3,
+    density : 0.06,
     restitution : 0.8,
     r : 119, g : 255, b : 91
   },
   SuperBall : {
-    density : 0.3,
+    density : 0.06,
     restitution : 0.995,
     r : 1, g : 65, b : 255
   },
   Pillow : {
-    density : 1.0,
+    density : 0.2,
     restitution : 0.2,
     r : 122, g : 155, b : 148
   },
@@ -212,7 +212,7 @@ const material = {
     r : 100, g : 205, b : 255
   }
 };
-const gravityScale = 5.0;
+const gravityScale = 7.5;
 const gravity = new vector2(0, 10.0 * gravityScale);
 const dt = 1.0 / 60.0;
 //------------------------------------------------------------------------------ clock
@@ -405,7 +405,7 @@ polygonShape.prototype.setBox = function(hw, hh){
 polygonShape.prototype.set = function(vertices, count){
   assert((count > 2) && (count <= this.MaxPolyVertexCount));
   count = Math.min(Math.floor(count), this.MaxPolyVertexCount);
-  console
+  //console
   // 가장 오른쪽 위치 점 찾기
   let rightMost = 0;
   let highestXCoord = vertices[0].x;
@@ -556,6 +556,7 @@ body.prototype.applyForce = function(f){
 
 // 충격량 적용
 body.prototype.applyImpulse = function(impulse, contactVector){
+  //console.log(impulse);
   this.velocity = new vector2(this.velocity.x + this.im * impulse.x,
                               this.velocity.y + this.im * impulse.y);
   this.angularVelocity += this.iI * crossVV(contactVector, impulse);
@@ -587,7 +588,7 @@ body.prototype.integrateForces = function(dt){
   if(this.im == 0.0){
     return;
   }
-
+  //console.log(dt/2.0);
   this.velocity.set(this.velocity.x +
             (this.force.x * this.im + gravity.x) * (dt / 2.0),
                     this.velocity.y +
@@ -866,6 +867,7 @@ function CircletoPolygon(m, a, b){
 
   //중심이 다각형 안에 있는지 확인
   if(separation < EPSILON){
+    //console.log("z");
     m.contact_count = 1;
     let temp = B.u.multiplicationV(B.m_normals[faceNormal]);
     m.normal = new vector2(-temp.x, -temp.y);
@@ -1208,6 +1210,53 @@ function PolygontoPolygon(m, a, b){
   return m;
 }
 
+function PolygontoPoint(a, b){
+  A = a.shape;
+  B = b;
+
+  let center = new vector2(b.x, b.y);
+  center = A.u.transpose().multiplicationV(new vector2(center.x - a.position.x,
+                                                      center.y - a.position.y));
+
+  let separation = -FLT_MAX;
+  for(let i = 0; i < A.m_vertexCount; ++i){
+    let s = dotVV(A.m_normals[i], new vector2(center.x - A.m_vertices[i].x,
+                                            center.y - A.m_vertices[i].y));
+    if(s > EPSILON){
+      return false;
+    }
+
+    if(s > separation){
+      separation = s;
+    }
+  }
+  if(separation < EPSILON){
+    return true;
+  }
+
+}
+
+function CircletoPoint(a, b){
+  A = a.shape;
+  B = b;
+
+  // 법선 계산
+  let normal = new vector2(b.x - a.position.x,
+                          b.y - a.position.y);
+
+  let dist_sqr = normal.lengthXX2();
+  let radius = A.radius;
+
+  if(dist_sqr >= (radius * radius)){
+    return false;
+  }
+  else{
+    return true;
+  }
+
+
+
+}
 
 //------------------------------------------------------------------------------ scene
 
@@ -1216,6 +1265,7 @@ let scene = function(dt, iterations){
   this.m_iterations = iterations;
 
   //this.count = 0;
+  this.delete = [];
 
   this.bodies = {};
 
@@ -1286,9 +1336,20 @@ scene.prototype.step = function(){
 
   // Clear all forces
   for(let i = 0; i < size(this.bodies); ++i){
-    this.bodies[i].force.set(0, 0);
+    this.bodies[i].force.set(0,0);
     this.bodies[i].torque = 0;
   }
+
+  // bodies delete
+  let temp = {};
+  for(let i = 0; i < size(this.bodies); ++i){
+    if(this.delete.indexOf(i) == -1){
+      temp[size(temp)] = this.bodies[i];
+    }
+  }
+  this.delete = [];
+  this.bodies = temp;
+
 }
 
 scene.prototype.render = function(){};
@@ -1302,8 +1363,10 @@ scene.prototype.add = function(shape, x, y){
 }
 
 scene.prototype.clear = function(){
+
   this.bodies = {};
   this.contacts = {};
+  this.delete = [];
 };
 
 
